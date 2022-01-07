@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Person List</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container">
+  <div style="text-align:center;margin-top:30px">
+    <h2>listes personnes</h2>
+  </div>
+<table class="table" >
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">nom</th>
+    <th scope="col">prenom</th>
+    <th scope="col">email</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="p:${listPerson}">
+    <td th:text="${p.id}"></td>
+    <td th:text="${p.firstName}"></td>
+    <td th:text="${p.lastName}"></td>
+    <td th:text="${p.email}"></td>
+  </tr>
+  </tbody>
+</table>
+<a th:href = "@{/showNewPerson}" class="btn btn-primary btn-sm mb-3">Ajouter une nouvelle personne</a>
+</div>
+</body>
+
+</html>

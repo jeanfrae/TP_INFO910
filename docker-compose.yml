@@ -1,0 +1,27 @@
+version: "3"
+services:
+  mysql: 
+    container_name: mysql
+    image: mysql
+    ports: 
+     - 3306:3306   
+    environment:
+      MYSQL_DATABASE: mysql
+      MYSQL_ROOT_PASSWORD: password
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      timeout: 20s
+      retries: 5
+
+  springboot-app:
+    container_name: spring-app
+    image: jeanfrae/tp-info910
+
+    restart: always
+    build: ./app
+    ports:
+      - 8080:8080
+    depends_on:
+      mysql:
+        condition: service_healthy
+    

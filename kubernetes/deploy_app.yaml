@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: person-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      web-app: person-web
+  template:
+    metadata:
+      labels:
+        web-app: person-web
+    spec:
+      containers:
+      - image: jeanfrae/tp-info910
+        name: springboot-app
+       
+        
+        
