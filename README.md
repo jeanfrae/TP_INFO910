@@ -10,7 +10,7 @@ On a une application java web qui permet de lister et d'ajouter une personne.
 
 L'application utilise une base de données mysql.
 
-Pour cela, on a créé deux conteneurs à partir du fichier. docker-compose.yml (cf. fichier docker-compose.yml)
+Pour cela, on a créé deux conteneurs à partir du fichier `docker-compose.yml` (cf. [TP_INFO910/docker-compose.yml](https://github.com/jeanfrae/TP_INFO910/blob/master/docker-compose.yml))
 
 Dans notre fichier [docker-compose.yml](https://github.com/jeanfrae/TP_INFO910/blob/master/docker-compose.yml) on a deux services :
 
@@ -31,7 +31,7 @@ services:
  ```   
      
 Le service `springboot-app` est fournit au moyen d'un conteneur `spring-app` créé à partir de l’image `jeanfrae/tp-info910` de l'application java web après avoir 
-construite à partir du [Dockerfile](https://github.com/jeanfrae/TP_INFO910/blob/master/app/Dockerfile) et de pousser sur le registre Docker hub.
+construite à partir du [Dockerfile](https://github.com/jeanfrae/TP_INFO910/blob/master/app/Dockerfile) et pousser sur le registre Docker hub.
 
 ```yml
    springboot-app:
@@ -67,13 +67,13 @@ Addresse URL de l'image jeanfrae/tp-info910 sur Docker hub:
  
 **Lancement et test de l’application**
 
-Se mettre au niveau de la répertoire `TP_INFO910` et lancer la commande ci-dessous afin de créer et de lancer les deux conteneurs:
+Se placer dans le répertoire `TP_INFO910` et lancer la commande ci-dessous afin de créer et de lancer les deux conteneurs:
 
 ```bash
 docker-compose up
 ```
 
-Maintenant l'application est accessible sur la machine locale via l'adresse : http://localhost:8080/person (pour afficher les listes des personnes) et via l'adresse URL: http://localhost:8080/showNewPerson (pour ajouter une nouvelle personne)
+Maintenant l'application est accessible sur la machine locale via l'adresse : http://localhost:8080 (http://localhost:8080/person) pour afficher les listes des personnes et via l'adresse URL: http://localhost:8080/showNewPerson (pour ajouter une nouvelle personne)
 
 ## Partie Kubernetes
 
@@ -81,13 +81,13 @@ On a utilisé `Google Cloud Platform (GCP)` pour créer un cluster kubernetes à
 
 
 - deploiement : [TP_INFO910/kubernetes/deploy_mysql.yaml](https://github.com/jeanfrae/TP_INFO910/blob/master/kubernetes/deploy_mysql.yaml)
-- service de type `ClusterIp`par defaut (https://github.com/jeanfrae/TP_INFO910/blob/master/kubernetes/service_mysql.yaml)
+- service de type `ClusterIp`par defaut [TP_INFO910/kubernetes/service_mysql.yaml](https://github.com/jeanfrae/TP_INFO910/blob/master/kubernetes/service_mysql.yaml)
 ---
 
 - deploiement : [TP_INFO910/kubernetes/deploy_app.yaml](https://github.com/jeanfrae/TP_INFO910/blob/master/kubernetes/deploy_app.yaml)
-- service de type `LoadBalancer`(https://github.com/jeanfrae/TP_INFO910/blob/master/kubernetes/service_app.yaml)
+- service de type `LoadBalancer`[TP_INFO910/blob/master/kubernetes/service_app.yaml](https://github.com/jeanfrae/TP_INFO910/blob/master/kubernetes/service_app.yaml)
 
-Pour deployer l'application, se mettre au niveau de la répertoire `TP_INFO910/kubernetes`
+Pour deployer l'application, se placer dans le répertoire `TP_INFO910/kubernetes`
 
 Il faut tout d'abord deployer en premier`pvc_mysql.yaml`[TP_INFO910/kubernetes/pvc_mysql.yaml](https://github.com/jeanfrae/TP_INFO910/blob/master/kubernetes/pvc_mysql.yaml) pour reclamer un persistent volume au provider gcp
 
@@ -120,6 +120,10 @@ kubectl apply -f service_app.yaml
 **L'application est accessible sur l'adresse :**
 
 http://35.205.209.77:8080/
+
+http://35.205.209.77:8080/person (pour afficher les listes des personnes)
+
+http://35.205.209.77:8080/showNewPerson (pour ajouter une nouvelle personne)
 
 
 
