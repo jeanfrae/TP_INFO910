@@ -31,7 +31,7 @@ services:
  ```   
      
 Le service `springboot-app` est fournit au moyen d'un conteneur `spring-app` créé à partir de l’image `jeanfrae/tp-info910` de l'application java web après avoir 
-construite à partir du [Dockerfile](https://github.com/jeanfrae/TP_INFO910/blob/master/app/Dockerfile) et pousser sur le registre Docker hub.
+construite à partir du `Dockerfile` ([TP_INFO910/app/Dockerfile](https://github.com/jeanfrae/TP_INFO910/blob/master/app/Dockerfile)) et pousser sur le registre Docker hub.
 
 ```yml
    springboot-app:
